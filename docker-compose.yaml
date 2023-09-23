@@ -1,0 +1,16 @@
+services:
+  openvpn:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vpn_server
+    env_file:
+      - .env
+    volumes:
+      - ./openvpn-data:/etc/openvpn
+      - ./env:/etc/openvpn/.env
+    ports:
+      - "1194:1194/udp"
+    cap_add:
+      - NET_ADMIN
+    restart: always
