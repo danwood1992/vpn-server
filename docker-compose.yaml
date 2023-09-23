@@ -1,16 +1,9 @@
 services:
-  openvpn:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: vpn_server
-  
-    volumes:
-      - ./openvpn-data:/etc/openvpn/data
-    env_file:
-    - ./.env
-    ports:
-      - "1194:1194/udp"
+  vpn:
+    image: kylemanna/openvpn
     cap_add:
       - NET_ADMIN
-    restart: always
+    volumes:
+      - ./openvpn-data:/etc/openvpn
+    ports:
+      - "1194:1194/udp"
