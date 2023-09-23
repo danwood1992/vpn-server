@@ -1,10 +1,13 @@
 FROM kylemanna/openvpn
 
-WORKDIR /etc/openvpn
 # Copy the setup script
-COPY ./setup.sh /etc/openvpn/setup.sh
+COPY ./setup.sh /etc/openvpn/
+COPY ./.env /etc/openvpn/
 
-# Run the setup script
+# Make the setup script executable
 RUN chmod +x /etc/openvpn/setup.sh
+RUN ls -la /etc/openvpn
+WORKDIR /etc/openvpn
 
-CMD ["/etc/openvpn/setup.sh"]
+ENTRYPOINT ["/etc/openvpn/setup.sh"]
+
