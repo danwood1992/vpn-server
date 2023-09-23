@@ -7,8 +7,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./openvpn-data:/etc/openvpn
-      - ./env:/etc/openvpn/.env
+      - ./openvpn-data:/etc/openvpn/data
     ports:
       - "1194:1194/udp"
     cap_add:

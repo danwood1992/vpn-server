@@ -1,5 +1,6 @@
 FROM kylemanna/openvpn
 
+WORKDIR /etc/openvpn
 # Copy the setup script
 COPY ./setup.sh /etc/openvpn/setup.sh
 
